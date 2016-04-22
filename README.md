@@ -20,7 +20,7 @@ By default the Node `net` library only provides `remoteAddress`. This is problem
 
 ```javascript
 var cluster = require('cluster'); // Only required if you want the worker id
-var sticky = require('sticky-session');
+var sticky = require('sticky-session-reverse-proxy');
 
 var server = require('http').createServer(function(req, res) {
   res.end('worker: ' + cluster.worker.id);
