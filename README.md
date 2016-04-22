@@ -1,6 +1,8 @@
 # Sticky session (Reverse Proxy)
 
-A simple performant way to use [socket.io][0] with a [cluster][1].
+Base on https://github.com/indutny/sticky-session/pull/45
+
+This repository is for creating npm package
 
 ## Installation
 
