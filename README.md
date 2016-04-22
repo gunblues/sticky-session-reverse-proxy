@@ -12,15 +12,26 @@ npm install sticky-session-reverse-proxy
 
 ## Usage
 
+##### Reverse Proxy Support #####
+
+By default the Node `net` library only provides `remoteAddress`. This is problematic when your node app lives behind a reverse proxy. Below is an example of using sticky-session to load balance based on an arbitrary http header.
+
+**Warning:** The reverse proxy feature parses the first incoming http packet before load balancing it (in order to read the header), this may lead to performance issues.
+
 ```javascript
 var cluster = require('cluster'); // Only required if you want the worker id
-var sticky = require('sticky-session-reverse-proxy');
+var sticky = require('sticky-session');
 
 var server = require('http').createServer(function(req, res) {
   res.end('worker: ' + cluster.worker.id);
 });
 
-if (!sticky.listen(server, 3000)) {
+let isChild = sticky.listen(server, 3000, {
+  workers: 8,
+  proxyHeader: 'x-forwarded-for'//header to read for IP
+});
+
+if (!isChild) {
   // Master code
   server.once('listening', function() {
     console.log('server started on 3000 port');
@@ -29,7 +40,6 @@ if (!sticky.listen(server, 3000)) {
   // Worker code
 }
 ```
-Simple
 
 ## Reasoning
 
