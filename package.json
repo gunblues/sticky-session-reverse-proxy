@@ -1,7 +1,7 @@
 {
   "name": "sticky-session-reverse-proxy",
   "description": "Base on https://github.com/indutny/sticky-session/pull/45",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "kevin hsiao <hsiao.powen@gmail.com>",
   "main": "./lib/sticky-session-reverse-proxy",
   "dependencies": {
