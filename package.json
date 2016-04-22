@@ -1,0 +1,23 @@
+{
+  "name": "sticky-session-reverse-proxy",
+  "description": "Base on https://github.com/indutny/sticky-session/pull/45",
+  "version": "1.0.0",
+  "author": "kevin hsiao <hsiao.powen@gmail.com>",
+  "main": "./lib/sticky-session-reverse-proxy",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "ip": "^1.0.0"
+  },
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "devDependencies": {
+    "jscs": "^2.1.1",
+    "jshint": "^2.8.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "jscs lib/*.js lib/**/*.js && jshint lib/*.js lib/**/*.js && node test/test-basic.js"
+  },
+  "optionalDependencies": {}
+}
